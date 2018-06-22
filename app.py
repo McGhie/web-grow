@@ -43,7 +43,8 @@ for pin in pins:
 def main():
    # For each pin, read the pin state and store it in the pins dictionary:
    for pin in pins:
-      pins[pin]['state'] = GPIO.input(pin)
+      if 'GPIO' in pins[pin]['type']:
+          pins[pin]['state'] = GPIO.input(pin)
    # Put the pin dictionary into the template data dictionary:
    templateData = {
       'pins' : pins
