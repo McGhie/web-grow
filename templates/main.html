@@ -14,8 +14,8 @@
     <h1>RPi Web Server for automation</h1>
 <div class="row">
   <h2>HardCoded Motor is currently going a different direction <strong><_></strong></h2>
- <a href="16/12/left" class="btn btn-block btn-lg btn-default" role="button">Turn off</a>
- <a href="12/16/right" class="btn btn-block btn-lg btn-default" role="button">Turn off</a>
+ <a href="/16/12/left" class="btn btn-block btn-lg btn-default" role="button">Turn off</a>
+ <a href="/12/16/right" class="btn btn-block btn-lg btn-default" role="button">Turn off</a>
 </div>
 
 <div class="row">
@@ -23,12 +23,12 @@
    {% if 'GPIO' in pins[pin].type %}
       <div class="col-md-4">
    {% if pins[pin].state == true %}
-       <h2>{{ pins[pin].type }} is currently <strong>on</strong></h2>
+       <h2>{{ pins[pin].type }} is currently <strong>on</strong>
       <a href="/{{pin}}/off" class="btn btn-block btn-lg btn-default" role="button">Turn off</a>
-
+</h2>
    {% else %}
-           <h2>{{ pins[pin].type }} is currently <strong>off</strong></h2>
-           <a href="/{{pin}}/on" class="btn btn-block btn-lg btn-primary" role="button">Turn on</a>
+           <h2>{{ pins[pin].type }} is currently <strong>off</strong>
+           <a href="/{{pin}}/on" class="btn btn-block btn-lg btn-primary" role="button">Turn on</a></h2>
   {% endif %}
   </div>
    {% endif %}
