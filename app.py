@@ -51,7 +51,10 @@ def action(changePin, action):
       GPIO.output(changePin, GPIO.LOW)
       message = "Turned " + devicetype + " off."
 
+
    # For each pin, read the pin state and store it in the pins dictionary:
+
+
    for pin in pins:
       if 'GPIO' in pins[pin]['type']:
          pins[pin]['state'] = GPIO.input(pin)
@@ -62,6 +65,24 @@ def action(changePin, action):
    }
 
    return render_template('main.html', **templateData)
+ #not sure if this will work yet
+@app.route("/<changePin>/<oldPin>/<action>")
+def directionAction(changePin,oldPin, action):
+    if action == "left":
+       GPIO.output(oldPin, GPIO.LOW)
+       GPIO.output(changePin, GPIO.HIGH)
+       message = "Turned Motor Direction"
+    if action == "right":
+       GPIO.output(oldPin, GPIO.LOW)
+       GPIO.output(changePin, GPIO.HIGH)
+       message = "Turned Motor Direction"
+   templateData = {
+      'pins' : pins
+   }
+
+   return render_template('main.html', **templateData)
+
+
 
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port=80, debug=True)
