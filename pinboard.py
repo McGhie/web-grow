@@ -19,5 +19,6 @@ pins = {
    12 : {'type' : 'GPIO 18', 'state' : GPIO.LOW},
    13 : {'type' : 'GPIO 27', 'state' : GPIO.LOW},
    14 : {'type' : 'Ground', 'state' : GPIO.LOW},
-
+   15 : {'type' : 'GPIO 22', 'state' : GPIO.LOW},
+   16 : {'type' : 'GPIO 23', 'state' : GPIO.LOW},
    }
