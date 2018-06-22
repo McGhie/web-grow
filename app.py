@@ -9,6 +9,7 @@ Complete project details: http://randomnerdtutorials.com
 
 
 from flask import Flask, render_template, request
+import RPi.GPIO as GPIO
 import pinboard
 app = Flask(__name__)
 
