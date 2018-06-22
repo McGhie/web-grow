@@ -12,27 +12,28 @@
 <body>
   <div class="col-xs-12">
    <h1>RPi Web Server for automation</h1>
-
+<div class="row">
     {% for pin in pins %}
    {% if 'GPIO' in pins[pin].type %}
 
    {% if pins[pin].state == true %}
          <h2>{{ pins[pin].type }} is currently <strong>on</strong></h2>
-      <div class="row">
-        <div class="col-md-2">
+
+        <div class="col-md-4">
           <a href="/{{pin}}/off" class="btn btn-block btn-lg btn-default" role="button">Turn off</a>
         </div>
       </div>
    {% else %}
          <h2>{{ pins[pin].type }} is currently <strong>off</strong></h2>
          <div class="row">
-           <div class="col-md-2">
+           <div class="col-md-4">
              <a href="/{{pin}}/on" class="btn btn-block btn-lg btn-primary" role="button">Turn on</a>
            </div>
-         </div>
+
    {% endif %}
    {% endif %}
    {% endfor %}
+    </div>
 
  </div>
 </body>
