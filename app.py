@@ -12,6 +12,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 GPIO.setmode(GPIO.BOARD)
+on = 'on'
 
 # Create a dictionary called pins to store the pin number, type, and pin state:
 pins = {
