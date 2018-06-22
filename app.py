@@ -71,7 +71,8 @@ def action(changePin, action):
 
    # For each pin, read the pin state and store it in the pins dictionary:
    for pin in pins:
-      pins[pin]['state'] = GPIO.input(pin)
+      if 'GPIO' in pins[pin]['type']:
+         pins[pin]['state'] = GPIO.input(pin)
 
    # Along with the pin dictionary, put the message into the template data dictionary:
    templateData = {
