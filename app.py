@@ -76,11 +76,16 @@ def directionAction(changePin,oldPin, action):
        GPIO.output(oldPin, GPIO.LOW)
        GPIO.output(changePin, GPIO.HIGH)
        message = "Turned Motor Direction"
-   templateData = {
-      'pins' : pins
-   }
 
-   return render_template('main.html', **templateData)
+    for pin in pins:
+       if 'GPIO' in pins[pin]['type']:
+          pins[pin]['state'] = GPIO.input(pin)
+
+    templateData = {
+      'pins' : pins
+    }
+
+    return render_template('main.html', **templateData)
 
 
 
