@@ -14,7 +14,7 @@
    <h1>RPi Web Server for automation</h1>
 
     {% for pin in pins %}
-   {% if 'GPIO' in pins[pin].type}
+   {% if 'GPIO' in pins[pin].type %}
 
    {% if pins[pin].state == true %}
          <h2>{{ pins[pin].type }} is currently <strong>on</strong></h2>
