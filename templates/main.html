@@ -14,6 +14,7 @@
     <h1>RPi Web Server for automation</h1>
 <div class="row">
   <h4>HardCoded Motor is currently going a different direction <strong><_></strong></h4>
+    <div class="col-sm-6 col-sm-offset-3">
 {%if pins[12].state == true %}
  <a href="/12/left" class="btn btn-block btn-lg btn-default" role="button">Turn</a>
  {%elif pins[16].state == true%}
@@ -22,6 +23,7 @@
 <a href="/12/left" class="btn btn-block btn-sm btn-default" role="button">Turn</a>
 <a href="/12/right" class="btn btn-block btn-sm btn-default" role="button">Turn</a>
 {%endif%}
+</div>
 </div>
 
 <div class="row">
