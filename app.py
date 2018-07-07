@@ -11,6 +11,8 @@ Source code: https://github.com/McGhie/web-grow
 
 from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
+import read_arduino as ra;
+
 
 DEBUG = True
 
@@ -158,6 +160,9 @@ def new():
          return redirect(url_for('webgrowdev'))
    return render_template('new.html')
 
+@app.route('/arduino', methods = ['GET', 'POST'])
+def arduino():
+   return render_template('arduino.html')
 
 
 if __name__ == "__main__":
