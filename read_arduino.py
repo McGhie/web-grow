@@ -10,11 +10,11 @@ def getfrompi():
 
 	port =serial.Serial(
 		"/dev/ttyUSB0",
-		baudrate=57600,
+		baudrate=9600,
 		parity=serial.PARITY_NONE,
 		stopbits=serial.STOPBITS_ONE,
 		bytesize=serial.EIGHTBITS,
-		writeTimeout = 0,
+		writeTimeout = 10,
 		timeout = 10,
 		rtscts=False,
 		dsrdtr=False,
@@ -26,7 +26,7 @@ def getfrompi():
 	if (counter<5):
 		x=port.readline()
 		if(x):
-			text_file = open("templates/Output.txt", "a+")
+			text_file = open("templates/arduino.html", "a+")
 			text_file.write(x)
 			text_file.close()
 		counter = counter + 1
