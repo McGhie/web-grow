@@ -21,15 +21,13 @@ def getfrompi():
 		xonxoff=False
 	)
 
-	counter=0;
 
-	if (counter<5):
-		x=port.readline()
-		if(x):
-			text_file = open("templates/arduino.html", "a+")
-			text_file.write(x)
-			text_file.close()
-		counter = counter + 1
+	x=port.readline()
+	if(x):
+		text_file = open("templates/arduino.html", "a+")
+		text_file.write(x)
+		text_file.close()
+	
 
 
 def getfromlaptop():
