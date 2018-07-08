@@ -11,8 +11,9 @@ Source code: https://github.com/McGhie/web-grow
 
 from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
-import read_arduino as ra;
 
+
+import read_arduino
 
 DEBUG = True
 
@@ -23,11 +24,17 @@ def log(s):
 try:
     import RPi.GPIO as GPIO
     import pinboard
+    DEBUG = False
+
+
 except ImportError:
     #raise ImportError('you are not using a raspberryPi, debug strings are set')
     from debugFolder import debugStrings as pinboard
     from debugFolder import gpioString as GPIO
     GPIO = pinboard.GPIO
+
+
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///webgrowdev.sqlite3'
@@ -175,8 +182,19 @@ def new():
          return redirect(url_for('webgrowdev'))
    return render_template('new.html')
 
+
 @app.route('/conditions', methods = ['GET', 'POST'])
 def arduino():
+   if (DEBUG):
+       read_arduino.getfromlaptop()
+   else:
+       read_arduino.getfrompi()
+   return render_template('conditions.html')
+
+@app.route("/conditions/<action>")
+def edit(action):
+   if action == "clear":
+       read_arduino.clearData()
    return render_template('conditions.html')
 
 
