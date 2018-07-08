@@ -195,6 +195,9 @@ def arduino():
 def edit(action):
    if action == "clear":
        read_arduino.clearData()
+   if action == "readfrompi":
+       read_arduino.getfrompi()
+
    return render_template('conditions.html')
 
 
