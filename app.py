@@ -69,7 +69,7 @@ for pin in pins:
 
 
 
-@app.route("/")
+@app.route("/index")
 def main():
    # For each pin, read the pin state and store it in the pins dictionary:
    #log(route("/"))
@@ -82,7 +82,22 @@ def main():
       }
 
    # Pass the template data into the template main.html and return it to the user
-   return render_template('main.html', **templateData)
+   return render_template('index.html', **templateData)
+
+@app.route("/controls")
+def controls():
+   # For each pin, read the pin state and store it in the pins dictionary:
+   #log(route("/"))
+   for pin in pins:
+      if 'GPIO' in pins[pin]['type']:
+          pins[pin]['state'] = GPIO.input(pin)
+   # Put the pin dictionary into the template data dictionary:
+   templateData = {
+      'pins' : pins
+      }
+
+   # Pass the template data into the template main.html and return it to the user
+   return render_template('controls.html', **templateData)
 
 # The function below is executed when someone requests a URL with the pin number and action in it:
 @app.route("/<changePin>/<action>")
@@ -160,9 +175,9 @@ def new():
          return redirect(url_for('webgrowdev'))
    return render_template('new.html')
 
-@app.route('/arduino', methods = ['GET', 'POST'])
+@app.route('/conditions', methods = ['GET', 'POST'])
 def arduino():
-   return render_template('arduino.html')
+   return render_template('conditions.html')
 
 
 if __name__ == "__main__":

@@ -1,48 +1,25 @@
 <!DOCTYPE html>
 <head>
-   <title>RPi Appliance Control Web Server</title>
-   <!-- Latest compiled and minified CSS -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-   <!-- Optional theme -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-   <!-- Latest compiled and minified JavaScript -->
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<title>RPi Appliance Control Web Server</title>
+
 </head>
 
+
 <body>
-  <div class="col-xs-12">
-    <h1>RPi Web Server for automation</h1>
-<div class="row">
-  <h4>HardCoded Motor is currently going a different direction <strong><_></strong></h4>
-    <div class="col-sm-6 col-sm-offset-3">
-{%if pins[12].state == true %}
- <a href="/12/left" class="btn btn-block btn-lg btn-default" role="button">Turn</a>
- {%elif pins[16].state == true%}
- <a href="/12/right" class="btn btn-block btn-lg btn-default" role="button">Turn</a>
-{%else%}
-<a href="/12/left" class="btn btn-block btn-sm btn-default" role="button">Turn</a>
-<a href="/12/right" class="btn btn-block btn-sm btn-default" role="button">Turn</a>
-{%endif%}
-</div>
-</div>
+  <div class="col-xs-12 col-sm-offset-1 col-sm-10">
 
-<div class="row">
-    {% for pin in pins %}
-   {% if 'GPIO' in pins[pin].type %}
-      <div class="col-md-4">
-   {% if pins[pin].state == true %}
-       <h2>{{ pins[pin].type }} is currently <strong>on</strong>
-      <a href="/{{pin}}/off" class="btn btn-block btn-lg btn-default" role="button">Turn off</a>
-</h2>
-   {% else %}
-           <h2>{{ pins[pin].type }} is currently <strong>off</strong>
-           <a href="/{{pin}}/on" class="btn btn-block btn-lg btn-primary" role="button">Turn on</a></h2>
-  {% endif %}
-  </div>
-   {% endif %}
-   {% endfor %}
-    </div>
+  {% include "nav.html" %}
 
+ <div id="content">
+   {% block content %}
+   {% endblock %}
  </div>
-</body>
+
+</div>
+  </body>
 </html>
