@@ -27,7 +27,7 @@ def getfrompi():
 		x=port.readline()
 		if(x):
 			text_file = open("templates/Output.txt", "a+")
-			text_file.write(x+"\r\n")
+			text_file.write(x)
 			text_file.close()
 		counter = counter + 1
 
