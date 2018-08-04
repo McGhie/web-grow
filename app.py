@@ -39,6 +39,7 @@ except ImportError:
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///webgrowdev.sqlite3'
 app.config['SECRET_KEY'] = "random string"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 class webgrowdev(db.Model):
@@ -62,6 +63,7 @@ db.create_all()
 
 
 
+
 #////////////////////////////////////////////////////////////
 
 pins = pinboard.pins
@@ -78,6 +80,7 @@ for pin in pins:
 
 @app.route("/index")
 def main():
+
    # For each pin, read the pin state and store it in the pins dictionary:
    #log(route("/"))
    for pin in pins:
@@ -100,7 +103,8 @@ def controls():
           pins[pin]['state'] = GPIO.input(pin)
    # Put the pin dictionary into the template data dictionary:
    templateData = {
-      'pins' : pins
+      'pins' : pins,
+
       }
 
    # Pass the template data into the template main.html and return it to the user
@@ -138,6 +142,8 @@ def action(changePin, action):
 
    for pin in pins:
       if 'GPIO' in pins[pin]['type']:
+         pins[pin]['state'] = GPIO.input(pin)
+      if 'Pump' in pins[pin]['type']:
          pins[pin]['state'] = GPIO.input(pin)
 
    # Along with the pin dictionary, put the message into the template data dictionary:
@@ -202,6 +208,7 @@ def edit(action):
 
 
 if __name__ == "__main__":
+
 
    db.create_all()
    app.run(host='0.0.0.0', port=8080, debug=True)
