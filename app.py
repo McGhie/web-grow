@@ -143,8 +143,7 @@ def action(changePin, action):
    for pin in pins:
       if 'GPIO' in pins[pin]['type']:
          pins[pin]['state'] = GPIO.input(pin)
-      if 'Pump' in pins[pin]['type']:
-         pins[pin]['state'] = GPIO.input(pin)
+
 
    # Along with the pin dictionary, put the message into the template data dictionary:
    templateData = {
