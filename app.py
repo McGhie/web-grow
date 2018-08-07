@@ -11,11 +11,16 @@ Source code: https://github.com/McGhie/web-grow
 
 from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
+import datetime
 
-
+from py import momentjs
 import read_arduino
+import moment
+from py import clock as clock
 
 DEBUG = True
+
+
 
 def log(s):
     if DEBUG:
@@ -39,6 +44,8 @@ except ImportError:
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///webgrowdev.sqlite3'
 app.config['SECRET_KEY'] = "random string"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 
 db = SQLAlchemy(app)
 class webgrowdev(db.Model):
@@ -55,10 +62,6 @@ class webgrowdev(db.Model):
       self.pin = pin
 
 db.create_all()
-
-
-
-
 
 
 
@@ -85,9 +88,10 @@ def main():
           pins[pin]['state'] = GPIO.input(pin)
    # Put the pin dictionary into the template data dictionary:
    templateData = {
+      'now':moment.now().format("DD-MM-YYYY"),
       'pins' : pins
-      }
 
+      }
    # Pass the template data into the template main.html and return it to the user
    return render_template('index.html', **templateData)
 
@@ -203,5 +207,7 @@ def edit(action):
 
 if __name__ == "__main__":
 
+
    db.create_all()
+
    app.run(host='0.0.0.0', port=8080, debug=True)
