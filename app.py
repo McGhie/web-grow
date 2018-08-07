@@ -13,7 +13,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 import datetime
 
-from py import momentjs
+
 import read_arduino
 import moment
 from py import clock as clock
