@@ -16,7 +16,7 @@ from flask import flash
 import datetime
 #import threading
 
-#from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit
 from flask import Flask, render_template, url_for, copy_current_request_context
 from random import random
 from time import sleep
