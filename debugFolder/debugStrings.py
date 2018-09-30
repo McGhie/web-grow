@@ -1,5 +1,5 @@
 
-import gpioString as GPIO
+from debugFolder import gpioString as GPIO
 on = 'on'
 GND = 'Ground'
 

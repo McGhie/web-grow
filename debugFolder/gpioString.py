@@ -1,5 +1,6 @@
-OUT = "GPIO.OUT"
+OUT = "GPIO.HIGH"
 LOW = "GPIO.LOW"
+HIGH = "GPIO.HIGH"
 
 
 def setup(pin, GPIO_OUT):
