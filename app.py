@@ -237,7 +237,7 @@ def test_disconnect():
 #  return render_template('index.html', **templateData)
 
 @app.route("/index/servo/<duration>")
-def servoAction():
+def servoAction(duration):
     servo.timer(duration)
     for pin in pins:
        if 'GPIO' in pins[pin]['type']:
