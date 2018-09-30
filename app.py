@@ -236,7 +236,7 @@ def test_disconnect():
 #     }
 #  return render_template('index.html', **templateData)
 
-@app.route("index/servo/<duration>")
+@app.route("/index/servo/<duration>")
 def servoAction():
     servo.timer(duration)
     for pin in pins:
