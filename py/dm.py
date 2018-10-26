@@ -10,6 +10,10 @@ GPIO.output(16, GPIO.LOW)
 GPIO.output(18, GPIO.HIGH)
 
 sleep(1)
+GPIO.output(16, GPIO.LOW)
+GPIO.output(18, GPIO.HIGH)
+sleep(1)
+
 GPIO.output(16, GPIO.HIGH)
 p = GPIO.PWM(12, 50)
 
