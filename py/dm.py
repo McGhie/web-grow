@@ -5,6 +5,8 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(12, GPIO.OUT)
 GPIO.setup(16, GPIO.OUT)
 GPIO.output(16, GPIO.HIGH)
+GPIO.setup(18, GPIO.OUT)
+GPIO.output(18, GPIO.HIGH)
 
 p = GPIO.PWM(12, 50)
 
