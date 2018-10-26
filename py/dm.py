@@ -10,6 +10,7 @@ p = GPIO.PWM(12, 50)
 p.start(100)
 
 sleep(5)
-p.stop()        
+p.ChangeDutyCycle(0)
+p.stop()
 
 GPIO.cleanup()
