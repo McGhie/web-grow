@@ -18,6 +18,9 @@ GPIO.output(16, GPIO.HIGH)
 p = GPIO.PWM(12, 50)
 
 p.start(100)
+sleep(1)
+GPIO.output(16, GPIO.LOW)
+
 
 sleep(2)
 p.ChangeDutyCycle(0)
