@@ -14,11 +14,17 @@ GPIO.output(16, GPIO.LOW)
 GPIO.output(18, GPIO.HIGH)
 sleep(1)
 
-
+print ("setting pump on")
 p = GPIO.PWM(12, 50)
 
 p.start(100)
-sleep(100)
+
+i = 1
+while i < 20:
+  sleep(10)
+  print(i)
+  i += 1
+
 GPIO.output(18, GPIO.LOW)
 p.stop()
 GPIO.cleanup()
