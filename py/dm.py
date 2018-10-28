@@ -18,7 +18,7 @@ sleep(1)
 p = GPIO.PWM(12, 50)
 
 p.start(100)
-sleep(1)
+sleep(600)
 GPIO.output(18, GPIO.LOW)
 p.stop()
 GPIO.cleanup()
