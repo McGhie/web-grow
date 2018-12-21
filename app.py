@@ -10,7 +10,7 @@ Source code: https://github.com/McGhie/web-grow
 '''
 import os
 from flask import Flask, render_template, redirect, url_for, request
-from flask_sqlalchemy import SQLAlchemy
+
 from flask import flash
 #from flask.ext.socketio import SocketIO, emit
 import datetime
@@ -26,7 +26,7 @@ from threading import Thread, Event
 import read_arduino
 import moment
 from py import clock as clock
-from py import servo as servo
+#from py import servo as servo
 
 DEBUG = True
 
@@ -58,21 +58,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 socketio = SocketIO(app)
 
 
-db = SQLAlchemy(app)
-class webgrowdev(db.Model):
-   id = db.Column('student_id', db.Integer, primary_key = True)
-   name = db.Column(db.String(100))
-   city = db.Column(db.String(50))
-   addr = db.Column(db.String(200))
-
-
-   def __init__(self, name, city, addr):
-      self.name = name
-      self.city = city
-      self.addr = addr
-
-
-db.create_all()
 
 
 
@@ -403,6 +388,6 @@ def edit(action):
 if __name__ == "__main__":
 
 
-   db.create_all()
+   
 
    app.run(host='0.0.0.0', port=8080, debug=True)

@@ -12,11 +12,7 @@ import moment
 
 baseinterval = 15
 pumpon = 0
-pumpoff = 
+pumpoff = 1
 
 
 baseinterval = 15
-
-
-def run()
-
