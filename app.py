@@ -29,7 +29,7 @@ from py import clock as clock
 #from py import servo as servo
 
 DEBUG = True
-
+#Su_Mo_Tu_We_Th_Fr_Sa
 
 
 def log(s):
@@ -388,6 +388,6 @@ def edit(action):
 if __name__ == "__main__":
 
 
-   
+
 
    app.run(host='0.0.0.0', port=8080, debug=True)
