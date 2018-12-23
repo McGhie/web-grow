@@ -94,7 +94,7 @@ print ("Pump thread is: " + str(pump_thread_event.isSet()))
 
 \
 
-##@app.route("/index")
+@app.route("/index")
 def main():
 
    # For each pin, read the pin state and store it in the pins dictionary:
