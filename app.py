@@ -24,7 +24,7 @@ from threading import Thread, Event
 
 
 import read_arduino
-import moment
+#import moment
 from py import clock as clock
 #from py import servo as servo
 
