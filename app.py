@@ -138,39 +138,6 @@ def main():
    return render_template('index.html', **templateData)
 
 
-# @socketio.on('connect', namespace='/test')
-# def test_connect():
-#     # need visibility of the global thread object
-#     global thread
-#     print('Client connected')
-#
-#     #Start the random number generator thread only if the thread has not been started before.
-#     if not thread.isAlive():
-#         print("Starting Thread")
-#         thread = RandomThread()
-#         thread.start()
-#
-# @socketio.on('disconnect', namespace='/test')
-# def test_disconnect():
-#     print('Client disconnected')
-
-
-
-@socketio.on('connect', namespace='/test')
-def pump_test_connect():
-    # need visibility of the global thread object
-    global pump_thread
-    print('Client connected')
-
-    #Start the random number generator thread only if the thread has not been started before.
-    if not pump_thread.isAlive():
-        print("Starting Thread")
-        pump_thread = PumptimerThread()
-        pump_thread.start()
-
-@socketio.on('disconnect', namespace='/test')
-def test_disconnect():
-    print('Client disconnected')
 
 
 
@@ -178,23 +145,6 @@ def test_disconnect():
 
 
 
-
-# @app.route("/index/<changePin>/<action>/<timer>")
-# def indexactiontimer(changePin, action, timer):
-#     # For each pin, read the pin state and store it in the pins dictionary:
-#  #log(route("/"))
-#  for pin in pins:
-#     if 'GPIO' in pins[pin]['type']:
-#         pins[pin]['state'] = GPIO.input(pin)
-#  # Put the pin dictionary into the template data dictionary:
-#
-#
-#  templateData = {
-#     'now':moment.now().format("DD-MM-YYYY"),
-#     'pins' : pins
-#
-#     }
-#  return render_template('index.html', **templateData)
 
 @app.route("/index/servo/<duration>")
 def servoAction(duration):
