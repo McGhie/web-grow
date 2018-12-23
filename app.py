@@ -115,12 +115,12 @@ print ("Pump thread is: " + str(pump_thread_event.isSet()))
 #         self.randomNumberGenerator()
 
 
-    def run(self):
-        self.hardcoded_10_min_pump_on()
+#def run(self):
+#    self.hardcoded_10_min_pump_on()
 #/////////////
 
 
-@app.route("/index")
+##@app.route("/index")
 def main():
 
    # For each pin, read the pin state and store it in the pins dictionary:
