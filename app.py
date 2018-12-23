@@ -92,7 +92,7 @@ pump_thread_event = Event()
 print ("Pump thread is: " + str(pump_thread_event.isSet()))
 
 
-\
+
 
 @app.route("/index")
 def main():
