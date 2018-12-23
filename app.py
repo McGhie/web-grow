@@ -104,8 +104,7 @@ def main():
           pins[pin]['state'] = GPIO.input(pin)
    # Put the pin dictionary into the template data dictionary:
    templateData = {
-      'now':globalData['now'],
-      'pins' : pins
+        'pins' : pins
 
       }
    # Pass the template data into the template main.html and return it to the user
