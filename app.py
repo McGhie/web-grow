@@ -51,11 +51,11 @@ print("HARDWARE: " + (os.uname()[4]) )
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///webgrowdev.sqlite3'
-app.config['SECRET_KEY'] = "random string"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///webgrowdev.sqlite3'
+#app.config['SECRET_KEY'] = "random string"
+#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-socketio = SocketIO(app)
+#socketio = SocketIO(app)
 
 
 
