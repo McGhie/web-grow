@@ -73,7 +73,7 @@ for pin in pins:
         GPIO.output(pin, GPIO.LOW)
 
 globalData = {
-   'now':moment.now().format("DD-MM-YYYY"),
+  # 'now':moment.now().format("DD-MM-YYYY"),
    'pumpon': clock.pumpon,
    'pumpoff': clock.pumpoff,
    'pins' : pins
@@ -114,35 +114,6 @@ print ("Pump thread is: " + str(pump_thread_event.isSet()))
 #     def run(self):
 #         self.randomNumberGenerator()
 
-class PumptimerThread(Thread):
-    def __init__(self):
-        self.delay = 600 #set delay for 10 mins currently 60 sec
-        super(PumptimerThread, self).__init__()
-
-    def hardcoded_10_min_pump_on(self):
-        """
-        Start the pump on thread for ten mins
-        """
-        print(pump_thread_event.isSet())
-        print("ready to start pump")
-        if pump_thread_event.isSet():
-            pumpstart = moment.now()
-            print("setting the pump status to on: " + str(globalData['now']))
-        while pump_thread_event.isSet():
-            timing = moment.now()
-            pumptimeto_offt = timing.add(8,'minute')
-            pumptimeto_off = str(pumptimeto_offt.format('HH:mm:s' ))
-            time = str(timing.format('HH:mm:s' ))
-            print(pumpstart)
-            socketio.emit('pumptest', {
-            'timer': time,
-            'pumptime2off': pumptimeto_off
-            }, namespace='/test')
-            #sleep for the time
-            sleep(self.delay)
-            #turn pump offset
-            #set pump_thread_event to offset
-            #pump_thread_event.clear()
 
     def run(self):
         self.hardcoded_10_min_pump_on()
@@ -257,7 +228,7 @@ def indexaction(changePin, action):
          pins[pin]['state'] = GPIO.input(pin)
   # Put the pin dictionary into the template data dictionary:
   templateData = {
-     'now':moment.now().format("DD-MM-YYYY"),
+     #'now':moment.now().format("DD-MM-YYYY"),
      'pins' : pins
 
      }
