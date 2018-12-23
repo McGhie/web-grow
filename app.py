@@ -74,8 +74,8 @@ for pin in pins:
 
 globalData = {
   # 'now':moment.now().format("DD-MM-YYYY"),
-   'pumpon': clock.pumpon,
-   'pumpoff': clock.pumpoff,
+  # 'pumpon': clock.pumpon,
+   #'pumpoff': clock.pumpoff,
    'pins' : pins
 
    }
