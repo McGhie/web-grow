@@ -25,7 +25,7 @@ from threading import Thread, Event
 
 import read_arduino
 #import moment
-from py import clock as clock
+#from py import clock as clock
 #from py import servo as servo
 
 DEBUG = True
