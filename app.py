@@ -119,7 +119,7 @@ def main():
 
 
 
-@app.route("/index/servo/<duration>")
+@app.route("/index/servo/<changePin>/<duration>")
 def servoAction(duration):
     servo.timer(duration)
     for pin in pins:
@@ -197,18 +197,11 @@ def action(changePin, action):
       GPIO.output(changePin, GPIO.LOW)
       message = "Turned " + devicetype + " off."
       #hardcoded direction/flip pins 12 and 16
-   if action == "left":
-      GPIO.output(12, GPIO.LOW)
-      GPIO.output(16, GPIO.HIGH)
-      message = "Turned Motor Direction"
-   if action == "right":
-      GPIO.output(16, GPIO.LOW)
-      GPIO.output(12, GPIO.HIGH)
-      message = "Turned Motor Direction"
    if action == "ten":
-      GPIO.output(12, GPIO.HIGH)
+      GPIO.output(changePin, GPIO.HIGH)
       print("the pump has started")
       pump_thread_event.set()
+
 
 
 
@@ -281,7 +274,4 @@ def edit(action):
 
 if __name__ == "__main__":
 
-
-
-
-   app.run(host='0.0.0.00', port=8080, debug=True)
+   app.run(host='0.0.0.00', port=8080, debug=False)
