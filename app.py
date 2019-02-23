@@ -128,11 +128,9 @@ def threadaction(duration):
      # For each pin, read the pin state and store it in the pins dictionary:
   #log(route("/"))
 
-  for t in threads:
-      if not t.isAlive():
-          pump = threading.Thread(target=pump, args=(duration,))
-          threads.append(pump)
-          pump.start(duration)
+  pump = threading.Thread(target=pump, args=(duration,))
+  threads.append(pump)
+  pump.start(duration)
   # Put the pin dictionary into the template data dictionary:
   templateData = {
      #'now':moment.now().format("DD-MM-YYYY"),
