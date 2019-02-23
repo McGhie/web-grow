@@ -94,8 +94,9 @@ def pump(sec):
 #random number Generator Thread
 
 
+
 threads = []
-pump = threading.Thread(target=pump, args=(i,))
+pump = threading.Thread(target=pump, args=(sec,))
 threads.append(pump)
 
 
