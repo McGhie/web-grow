@@ -20,7 +20,8 @@ import datetime
 from flask import Flask, render_template, url_for, copy_current_request_context
 from random import random
 from time import sleep
-from threading import Thread, Event
+#from threading import Thread, Event
+import threading
 
 
 import read_arduino
@@ -91,15 +92,10 @@ def p10():
 
 #/////////////////////////////
 #random number Generator Thread
-thread = Thread()
-thread_stop_event = Event()
 
-pump_thread = Thread()
-pump_thread_event = Event()
 
-print ("Pump thread is: " + str(pump_thread_event.isSet()))
 threads = []
-pump = thread(target=p10)
+pump = threading.thread(target=p10)
 threads.append(pump)
 
 
@@ -162,11 +158,6 @@ def servoAction(duration):
 def indexaction(changePin, action):
      # For each pin, read the pin state and store it in the pins dictionary:
   #log(route("/"))
-  if not pump_thread_event.isSet():
-      if action == "ten":
-          GPIO.output(12, GPIO.HIGH)
-          print("the pump has started")
-          pump_thread_event.set()
 
 
   for pin in pins:
@@ -223,7 +214,7 @@ def action(changePin, action):
    if action == "ten":
       GPIO.output(changePin, GPIO.HIGH)
       print("the pump has started")
-      pump_thread_event.set()
+
 
 
 
