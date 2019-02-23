@@ -113,7 +113,30 @@ def main():
 
 
 
+@app.route("/index/10min")
+def indexaction():
+     # For each pin, read the pin state and store it in the pins dictionary:
+  #log(route("/"))
 
+  GPIO.output(12, GPIO.HIGH)
+  time.sleep(600)
+  GPIO.output(12, GPIO.LOW)
+  GPIO.cleanup()
+
+  # Put the pin dictionary into the template data dictionary:
+  templateData = {
+     #'now':moment.now().format("DD-MM-YYYY"),
+     'pins' : pins
+
+     }
+
+
+
+
+
+
+  # Pass the template data into the template main.html and return it to the user
+  return render_template('index.html', **templateData)
 
 
 
