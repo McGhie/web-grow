@@ -84,9 +84,11 @@ globalData = {
 
 
 def pump(sec):
+    print("pump on")
     GPIO.output(12, GPIO.HIGH)
-    time.sleep(600)
+    time.sleep(30)
     GPIO.output(12, GPIO.LOW)
+    print("pump off")
     GPIO.cleanup()
 
 
