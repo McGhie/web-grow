@@ -83,7 +83,7 @@ globalData = {
 
 
 
-def p10():
+def pump(sec):
     GPIO.output(12, GPIO.HIGH)
     time.sleep(600)
     GPIO.output(12, GPIO.LOW)
@@ -95,7 +95,7 @@ def p10():
 
 
 threads = []
-pump = threading.Thread(target=p10)
+pump = threading.Thread(target=pump, args=(i,))
 threads.append(pump)
 
 
@@ -121,11 +121,11 @@ def main():
 
 
 
-@app.route("/index/10min")
-def threadaction():
+@app.route("/water/<duration>")
+def threadaction(duration):
      # For each pin, read the pin state and store it in the pins dictionary:
   #log(route("/"))
-  pump.start()
+  pump.start(duration)
   # Put the pin dictionary into the template data dictionary:
   templateData = {
      #'now':moment.now().format("DD-MM-YYYY"),
