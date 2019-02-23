@@ -95,7 +95,7 @@ def p10():
 
 
 threads = []
-pump = threading.thread(target=p10)
+pump = threading.Thread(target=p10)
 threads.append(pump)
 
 
