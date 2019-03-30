@@ -22,7 +22,7 @@ from random import random
 import time
 #from threading import Thread, Event
 import threading
-from .pumpthread import  pumpthread
+import  pumpthread
 
 import read_arduino
 #import moment
