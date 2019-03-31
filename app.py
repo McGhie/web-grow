@@ -130,7 +130,7 @@ def threadaction():
   print('do I get here')
   state = GPIO.input(12)
   print(state)
-  if (state):
+  if (!state):
       print('pump will start' + state)
       p = pumpthread.pumpthread()
   else:
@@ -138,6 +138,9 @@ def threadaction():
 
   print('thread done get here')
 
+  for pin in pins:
+      if 'GPIO' in pins[pin]['type']:
+         pins[pin]['state'] = GPIO.input(pin)
   templateData = {
      'pins' : pins
   }
