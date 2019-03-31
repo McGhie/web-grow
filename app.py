@@ -139,7 +139,7 @@ def threadaction():
   print(state)
   if (state == 0):
       print('pump will start' + state)
-      p = pumpthread.pumpthread()
+      #p = pumpthread.pumpthread()
   else:
       print('pump is already on' + state)
 
