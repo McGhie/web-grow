@@ -22,7 +22,7 @@ from random import random
 import time
 #from threading import Thread, Event
 import threading
-import  pumpthread
+from py import pumpthread
 
 import read_arduino
 #import moment
@@ -123,19 +123,24 @@ def main():
 
 
 
-@app.route("/water/<duration>")
-def threadaction(duration):
+@app.route("/water")
+def threadaction():
      # For each pin, read the pin state and store it in the pins dictionary:
   #log(route("/"))
+  print('do I get here')
+  state = GPIO.input(12)
+  if (state):
+      print('pump will start' + state)
+      p = pumpthread.pumpthread()
+  else:
+      print('pump is already on' + state)
 
-  pump = threading.Thread(target=pump, args=(duration,))
-  threads.append(pump)
-  pump.start(duration)
-  # Put the pin dictionary into the template data dictionary:
+  print('thread done get here')
+
   templateData = {
-     #'now':moment.now().format("DD-MM-YYYY"),
      'pins' : pins
-     }
+  }
+
   # Pass the template data into the template main.html and return it to the user
   return render_template('index.html', **templateData)
 

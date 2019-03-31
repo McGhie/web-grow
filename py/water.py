@@ -7,11 +7,11 @@ if (os.uname()[4].startswith("arm")): #check if system is pi if not use fake pin
     import pinboard
     DEBUG = False
     GPIO.setwarnings(False)
-    servoPIN = 16
+    waterPin = 12
     servoPower = 12
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(servoPIN,GPIO.OUT)
-    p = GPIO.PWM(servoPIN, 50)
+
 
 else:
     arm = False
@@ -25,13 +25,10 @@ onehour = 3600
 if (arm):
 
     def basic():
-          print('Checkpoint basic')
-          p.start(10)
-          time.sleep(1.5)
-          p.ChangeDutyCycle(1)
-          time.sleep(1.5)
-          p.ChangeDutyCycle(10)
-          p.stop()
+          print('Water basic')
+          GPIO.output(waterPin, GPIO.HIGH)
+          time.sleep(20)
+          GPIO.output(waterPin, GPIO.LOW)
           GPIO.cleanup
           print('Checkpoint cleanup')
 
@@ -48,12 +45,9 @@ if (arm):
 else:
 
     def basic():
-          print('Checkpoint basic')
-          time.sleep(1.5)
-          print('Sleep 1')
-          time.sleep(1.5)
-          print('Sleep 2')
-          print('Checkpoint cleanup')
+          print('Water basic')
+          time.sleep(20)
+          print('Checkpoint water cleanup')
 
     def timer(duration):
           print('Checkpoint basic')

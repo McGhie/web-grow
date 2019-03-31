@@ -1,6 +1,7 @@
 
 import threading
 import time
+import water
 
 
 class pumpthread(object):
@@ -22,14 +23,18 @@ class pumpthread(object):
 
     def run(self):
         """ Method that runs forever """
-        while True:
+        r = True
+        while r:
             # Do something
-            print('Doing something imporant in the background')
-
+            print('Doing something important in the background')
+            water.basic()
             time.sleep(self.interval)
+            r = False
+            print('important in the background is done')
 
-example = pumpthread()
-time.sleep(3)
-print('Checkpoint')
-time.sleep(2)
-print('Bye')
+
+
+"""if state:
+   print('on')
+else:
+   print('off')"""
