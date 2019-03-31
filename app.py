@@ -130,7 +130,7 @@ def threadaction():
   print('do I get here')
   state = GPIO.input(12)
   print(state)
-  if (!state):
+  if not state:
       print('pump will start' + state)
       p = pumpthread.pumpthread()
   else:
