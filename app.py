@@ -127,16 +127,6 @@ def main():
 def threadaction():
      # For each pin, read the pin state and store it in the pins dictionary:
   #log(route("/"))
-  print('do I get here')
-  state = GPIO.input(12)
-  print(state)
-  if not state:
-      print('pump will start' + state)
-      p = pumpthread.pumpthread()
-  else:
-      print('pump is already on' + state)
-
-  print('thread done get here')
 
   for pin in pins:
       if 'GPIO' in pins[pin]['type']:
@@ -144,6 +134,18 @@ def threadaction():
   templateData = {
      'pins' : pins
   }
+  print('do I get here')
+  state = GPIO.input(12)
+  print(state)
+  if (state == 0):
+      print('pump will start' + state)
+      p = pumpthread.pumpthread()
+  else:
+      print('pump is already on' + state)
+
+  print('thread done get here')
+
+
 
   # Pass the template data into the template main.html and return it to the user
   return render_template('index.html', **templateData)
