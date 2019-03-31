@@ -26,15 +26,8 @@ class pumpthread(object):
         r = True
         while r:
             # Do something
-            print('Doing something important in the background')
+            print('Watering the garden')
             water.basic()
             time.sleep(self.interval)
             r = False
-            print('important in the background is done')
-
-
-
-"""if state:
-   print('on')
-else:
-   print('off')"""
+            print('The garden has been watered')

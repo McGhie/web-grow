@@ -134,7 +134,7 @@ def threadaction():
   templateData = {
      'pins' : pins
   }
-  print('do I get here')
+  print('/water ....')
   state = GPIO.input(12)
   print(state)
   #if (state == 0):
@@ -143,56 +143,10 @@ def threadaction():
   #else:
     #  print('pump is already on' + state)
 
-  print('thread done get here')
-
-
-
   # Pass the template data into the template main.html and return it to the user
-  return render_template('index.html', **templateData)
+  return render_template('watering.html', **templateData)
 
 
-
-
-
-@app.route("/index/servo/<changePin>/<duration>")
-def servoAction(duration):
-    servo.timer(duration)
-    for pin in pins:
-       if 'GPIO' in pins[pin]['type']:
-           pins[pin]['state'] = GPIO.input(pin)
-   # Put the pin dictionary into the template data dictionary:
-    templateData = {
-       'now':globalData['now'],
-       'pins' : pins
-
-       }
-   # Pass the template data into the template main.html and return it to the user
-    return render_template('index.html', **templateData)
-
-
-@app.route("/index/<changePin>/<action>")
-def indexaction(changePin, action):
-     # For each pin, read the pin state and store it in the pins dictionary:
-  #log(route("/"))
-
-
-  for pin in pins:
-     if 'GPIO' in pins[pin]['type']:
-         pins[pin]['state'] = GPIO.input(pin)
-  # Put the pin dictionary into the template data dictionary:
-  templateData = {
-     #'now':moment.now().format("DD-MM-YYYY"),
-     'pins' : pins
-
-     }
-
-
-
-
-
-
-  # Pass the template data into the template main.html and return it to the user
-  return render_template('index.html', **templateData)
 
 @app.route("/controls")
 def controls():

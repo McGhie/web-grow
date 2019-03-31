@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div class="col-xs-12">
+
+
+<p>The Date is {{now}} </p>
+
+<h4>Pump contoler v1.1</h4>
+
+</div>
+{% if pins[12].state == true %}
+<div id="" class="col-xs-6"> Pump is running </div>
+
+{% endif %}
+{% endblock content %}
