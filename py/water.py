@@ -8,9 +8,8 @@ if (os.uname()[4].startswith("arm")): #check if system is pi if not use fake pin
     DEBUG = False
     GPIO.setwarnings(False)
     waterPin = 12
-    servoPower = 12
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(servoPIN,GPIO.OUT)
+    GPIO.setup(waterPin,GPIO.OUT)
 
 
 else:
