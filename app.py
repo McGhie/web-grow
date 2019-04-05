@@ -123,7 +123,7 @@ def main():
 
 
 
-@app.route("/water" methods=['GET'])
+@app.route("/water", methods=['GET'])
 def threadaction():
      # For each pin, read the pin state and store it in the pins dictionary:
   #log(route("/"))
