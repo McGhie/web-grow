@@ -1,4 +1,4 @@
-arrow==0.12.1
+arrow==0.15.1
 dateparser==0.7.0
 Flask==0.10.1
 Flask-SocketIO==3.0.1
